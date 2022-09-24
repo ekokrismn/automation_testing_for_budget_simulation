@@ -15,14 +15,11 @@ def testingBcafinance(harga_kendaraan, budget_baru, tipe_pembayaran, asuransi, w
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'C:\webdrivers\chromedriver.exe')
 
     driver.get("https://bcafinance.co.id/")
-    WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.XPATH, "//input[@class='form-control mr-sm-2']"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='form-control mr-sm-2']"))).click()
     search = driver.find_element_by_xpath("//input[@class='form-control mr-sm-2']")
     search.send_keys("Simulasi Budget")
     search.send_keys(Keys.RETURN)
     time.sleep(2)
-
-    search2 = driver.find_element_by_xpath("//h2")
 
     search3 = driver.find_element_by_xpath("//p[@class = 'font-weight-500 title'][1]")
     search3.click()
@@ -33,6 +30,7 @@ def testingBcafinance(harga_kendaraan, budget_baru, tipe_pembayaran, asuransi, w
     time.sleep(2)
 
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//select[@id='typeBudget-Baru']"))).click()
+    time.sleep(1)
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, tipe_pembayaran))).click()
     time.sleep(2)
 
@@ -41,6 +39,7 @@ def testingBcafinance(harga_kendaraan, budget_baru, tipe_pembayaran, asuransi, w
     time.sleep(2)
 
     driver.find_element_by_xpath("//select[@id='jenisAsuransi-Baru']").click()
+    time.sleep(1)
     driver.find_element_by_xpath(asuransi).click()
     time.sleep(2)
 
@@ -55,8 +54,7 @@ def testingBcafinance(harga_kendaraan, budget_baru, tipe_pembayaran, asuransi, w
 
     time.sleep(3)
 
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(
-        (By.XPATH, "(//div[@class='is-desktop action--wrapper']/button[@class='download-result'][1])[1]"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "(//div[@class='is-desktop action--wrapper']/button[@class='download-result'][1])[1]"))).click()
     time.sleep(3)
 
     driver.close()
